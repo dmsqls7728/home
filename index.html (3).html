@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>제주평안교회</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gothic+A1:wght@300;400;500;700;900&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'media',
+    theme: {
+      extend: {
+        colors: {
+          jeju: {
+            bg: '#F6F8F6', bgDark: '#0D1917',
+            surface: '#FFFFFF', surfaceDark: '#12211F',
+            surfaceAlt: '#EDF2ED', surfaceAltDark: '#172926',
+            ink: '#16262A', inkDark: '#E9F1EE',
+            inkSoft: '#4B6360', inkSoftDark: '#A9C2BC',
+            inkFaint: '#7C928E', inkFaintDark: '#77938D',
+            teal: '#0E7C74', tealDark: '#3FBDAE',
+            tealDeep: '#0A5C56', tealDeepDark: '#2E9186',
+            tealTint: '#E3F1EE', tealTintDark: '#16302D',
+            tangerine: '#E4712A', tangerineDark: '#F2924E',
+            tangerineDeep: '#C25818', tangerineDeepDark: '#E4712A',
+            tangerineTint: '#FBEADD', tangerineTintDark: '#2B2016',
+            line: '#DCE4DD', lineDark: '#223A36',
+            lineStrong: '#C4D0C8', lineStrongDark: '#2E4C46',
+            sun: '#F3B23E',
+            sea1: '#0E7C74', sea1Dark: '#123C39',
+            sea2: '#14A199', sea2Dark: '#175650',
+            sea3: '#E8F4F1', sea3Dark: '#0F211F',
+          }
+        },
+        fontFamily: {
+          display: ['"Gowun Batang"', '"Noto Serif KR"', 'serif'],
+          body: ['"Gothic A1"', '"Noto Sans KR"', 'sans-serif'],
+          accent: ['"Cormorant Garamond"', 'serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  ::selection { background: #FBEADD; color: #C25818; }
+  .reveal { opacity: 0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  .cue-line { animation: cueMove 1.8s ease-in-out infinite; }
+  @keyframes cueMove { 0%,100% { opacity: .3; } 50% { opacity: 1; } }
+  .parallax-layer { transition: transform .05s linear; }
+</style>
+</head>
+
+<body id="top" class="bg-jeju-bg dark:bg-jeju-bgDark text-jeju-ink dark:text-jeju-inkDark font-body leading-relaxed antialiased overflow-x-hidden selection:bg-jeju-tangerineTint selection:text-jeju-tangerineDeep">
+
+  <!-- ================= NAV ================= -->
+  <div id="navBg" class="fixed top-0 left-0 right-0 h-0 z-40 bg-jeju-bg/90 dark:bg-jeju-bgDark/90 backdrop-blur-md border-b border-transparent transition-all duration-300 pointer-events-none"></div>
+
+  <nav id="nav" class="sticky top-0 z-50 flex items-center justify-between max-w-[1140px] mx-auto px-7 py-5 transition-all duration-300">
+    <a href="#top" class="flex items-center gap-2.5 font-display font-bold text-lg tracking-tight">
+      <svg class="w-7 h-7 shrink-0" viewBox="0 0 32 32" fill="none">
+        <circle cx="16" cy="16" r="15" class="fill-jeju-tealTint dark:fill-jeju-tealTintDark"/>
+        <path d="M6 20 C10 15, 14 15, 16 18 C18 15, 22 15, 26 20" class="stroke-jeju-teal dark:stroke-jeju-tealDark" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="22" cy="10" r="3.2" class="fill-jeju-tangerine dark:fill-jeju-tangerineDark"/>
+      </svg>
+      제주평안교회
+    </a>
+
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-jeju-inkSoft dark:text-jeju-inkSoftDark">
+      <a href="#welcome" class="hover:text-jeju-teal dark:hover:text-jeju-tealDark transition-colors">소개</a>
+      <a href="#services" class="hover:text-jeju-teal dark:hover:text-jeju-tealDark transition-colors">예배안내</a>
+      <a href="#ministries" class="hover:text-jeju-teal dark:hover:text-jeju-tealDark transition-colors">사역</a>
+      <a href="#location" class="hover:text-jeju-teal dark:hover:text-jeju-tealDark transition-colors">오시는길</a>
+    </div>
+
+    <a href="#services" class="hidden md:inline-flex items-center gap-2 bg-jeju-teal hover:bg-jeju-tealDeep dark:bg-jeju-tealDark dark:hover:bg-jeju-tealDeepDark text-white rounded-sm px-5 py-2.5 text-sm font-bold whitespace-nowrap transition-all hover:-translate-y-0.5">
+      예배 시간 안내
+    </a>
+
+    <button id="navToggle" class="md:hidden p-1.5 text-jeju-ink dark:text-jeju-inkDark" aria-label="메뉴 열기">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"/></svg>
+    </button>
+
+    <div id="mobileMenu" class="hidden md:hidden fixed top-16 left-4 right-4 flex-col items-start gap-4 bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-md p-6 shadow-xl z-50 text-sm font-medium">
+      <a href="#welcome" class="block py-1">소개</a>
+      <a href="#services" class="block py-1">예배안내</a>
+      <a href="#ministries" class="block py-1">사역</a>
+      <a href="#location" class="block py-1">오시는길</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="relative overflow-hidden pt-4">
+      <div class="max-w-[1140px] mx-auto px-7 grid grid-cols-1 md:grid-cols-[1.05fr_0.95fr] items-center gap-10 md:min-h-[640px]">
+
+        <div class="relative z-10 py-8 md:py-12">
+          <span class="block font-accent italic font-medium text-base tracking-wide text-jeju-teal dark:text-jeju-tealDark mb-4">JEJU PYEONGAN CHURCH</span>
+          <h1 class="font-display font-bold text-[2.3rem] sm:text-5xl md:text-6xl leading-[1.28] mb-6" style="text-wrap:balance;">
+            바람과 파도가<br>잦아드는 곳,<br>
+            <em class="not-italic text-jeju-teal dark:text-jeju-tealDark">제주평안교회</em>
+          </h1>
+          <p class="text-lg text-jeju-inkSoft dark:text-jeju-inkSoftDark max-w-[46ch] mb-9">
+            한라산 자락 아래, 제주 바다를 마주하고 서서 하나님의 평안(平安)을 전하는 교회입니다. 처음 오시는 걸음도 편안하게 맞이합니다.
+          </p>
+          <div class="flex gap-3.5 flex-wrap">
+            <a href="#services" class="inline-flex items-center gap-2 bg-jeju-tangerine hover:bg-jeju-tangerineDeep dark:bg-jeju-tangerineDark dark:hover:bg-jeju-tangerineDeepDark text-white rounded-sm px-7 py-3.5 font-bold transition-all hover:-translate-y-0.5">예배 시간 안내</a>
+            <a href="#location" class="inline-flex items-center gap-2 border border-jeju-lineStrong dark:border-jeju-lineStrongDark hover:border-jeju-teal hover:text-jeju-teal dark:hover:border-jeju-tealDark dark:hover:text-jeju-tealDark rounded-sm px-7 py-3.5 font-bold transition-all">찾아오시는 길</a>
+          </div>
+        </div>
+
+        <div class="relative aspect-square md:aspect-[1/1.04] rounded-sm overflow-hidden bg-jeju-sea3 dark:bg-jeju-sea3Dark shadow-sm order-first md:order-last mt-6 md:mt-0">
+          <svg class="w-full h-full" viewBox="0 0 600 630" preserveAspectRatio="xMidYMid slice">
+            <rect width="600" height="630" class="fill-jeju-sea3 dark:fill-jeju-sea3Dark"/>
+            <circle class="parallax-layer fill-jeju-sun" data-depth="0.15" cx="452" cy="150" r="58" opacity="0.9"/>
+            <path class="parallax-layer fill-jeju-tealDeep dark:fill-jeju-tealDeepDark" data-depth="0.35" opacity="0.55"
+              d="M0 330 L120 220 L165 250 L230 175 C245 158,265 158,278 175 L320 230 L380 190 L440 260 L520 210 L600 300 L600 400 L0 400 Z"/>
+            <path class="parallax-layer fill-jeju-teal dark:fill-jeju-tealDark" data-depth="0.22" opacity="0.85"
+              d="M0 380 L90 300 L200 235 C218 222,240 222,256 236 L300 275 L360 220 L420 290 L510 250 L600 340 L600 430 L0 430 Z"/>
+            <rect x="0" y="410" width="600" height="220" class="fill-jeju-sea2 dark:fill-jeju-sea2Dark"/>
+            <path d="M0 420 Q60 408 120 420 T240 420 T360 420 T480 420 T600 420 V630 H0 Z" class="fill-jeju-sea3 dark:fill-jeju-sea3Dark" opacity="0.18"/>
+            <path d="M0 460 Q75 445 150 460 T300 460 T450 460 T600 460 V630 H0 Z" class="fill-jeju-surface dark:fill-jeju-surfaceDark" opacity="0.10"/>
+            <path d="M110 130 q10 -10 20 0 q10 -10 20 0" class="stroke-jeju-tealDeep dark:stroke-jeju-tealDeepDark" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+            <path d="M160 165 q8 -8 16 0 q8 -8 16 0" class="stroke-jeju-tealDeep dark:stroke-jeju-tealDeepDark" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.4"/>
+            <path d="M300 232 v-34 M289 210 h22" class="stroke-jeju-surface dark:stroke-jeju-surfaceDark" stroke-width="3.4" stroke-linecap="round"/>
+          </svg>
+          <div class="absolute left-1/2 -translate-x-1/2 bottom-4 flex flex-col items-center gap-1.5 text-[0.7rem] tracking-widest text-jeju-inkFaint dark:text-jeju-inkFaintDark">
+            <span>SCROLL</span>
+            <span class="cue-line w-px h-6 bg-gradient-to-b from-jeju-inkFaint dark:from-jeju-inkFaintDark to-transparent"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WELCOME ================= -->
+    <section id="welcome" class="py-24">
+      <div class="max-w-[1140px] mx-auto px-7">
+        <div class="reveal max-w-xl mb-14">
+          <span class="block font-accent italic font-medium text-jeju-teal dark:text-jeju-tealDark mb-3.5">WELCOME</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl mb-4" style="text-wrap:balance;">평안을 나누는 교회</h2>
+          <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark">낯선 걸음도 어색하지 않도록, 제주평안교회는 이웃과 나그네를 환대하는 공동체가 되고자 합니다. 예배와 말씀, 기도와 교제 속에서 참된 쉼을 경험하시길 바랍니다.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14">
+          <div class="reveal text-jeju-inkSoft dark:text-jeju-inkSoftDark space-y-5">
+            <p>제주평안교회는 섬의 바람과 바다를 닮은 공동체입니다. 세대를 넘어 함께 예배하고, 삶의 자리에서 서로를 돌보며, 제주 지역사회와 더불어 그리스도의 사랑을 나눕니다.</p>
+            <p>처음 방문하시는 분들을 위한 새가족 안내와 주차 도움을 준비하고 있으니, 편안한 마음으로 예배당 문을 두드려 주세요.</p>
+          </div>
+
+          <div class="reveal relative bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-9">
+            <span class="absolute top-0 left-0 w-[3px] h-full bg-jeju-tangerine dark:bg-jeju-tangerineDark"></span>
+            <p class="font-display text-xl leading-relaxed mb-4">"너희에게 평안을 끼치노니 곧 나의 평안을 너희에게 주노라"</p>
+            <p class="font-accent italic text-jeju-inkFaint dark:text-jeju-inkFaintDark text-sm">— 요한복음 14:27</p>
+
+            <div class="flex gap-5 items-start pt-7 mt-8 border-t border-jeju-line dark:border-jeju-lineDark">
+              <div class="w-14 h-14 rounded-full bg-jeju-tealTint dark:bg-jeju-tealTintDark flex items-center justify-center shrink-0">
+                <svg class="w-6 h-6 stroke-jeju-teal dark:stroke-jeju-tealDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 3 L12 13 M6 8 C6 8 8 6 12 6 C16 6 18 8 18 8" stroke-linecap="round"/><path d="M4 13 C4 18 8 21 12 21 C16 21 20 18 20 13" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <h3 class="font-display text-base mb-1">담임목사 인사말</h3>
+                <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">OOO 목사 · "제주의 바람처럼, 평안이 여러분의 삶에 머물기를 기도합니다."</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICE TIMES ================= -->
+    <section id="services" class="py-24 bg-jeju-surfaceAlt dark:bg-jeju-surfaceAltDark">
+      <div class="max-w-[1140px] mx-auto px-7">
+        <div class="reveal max-w-xl mb-14">
+          <span class="block font-accent italic font-medium text-jeju-teal dark:text-jeju-tealDark mb-3.5">SERVICE TIMES</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl mb-4" style="text-wrap:balance;">예배 안내</h2>
+          <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark">모든 예배는 누구나 참석하실 수 있습니다. 처음 오시는 분들도 편하게 자리해 주세요.</p>
+        </div>
+
+        <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-px bg-jeju-line dark:bg-jeju-lineDark border border-jeju-line dark:border-jeju-lineDark rounded-sm overflow-hidden">
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">SUNDAY · 1부</div>
+            <div class="font-display text-lg mb-1.5">주일예배</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오전 9:00</div>
+          </div>
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">SUNDAY · 2부</div>
+            <div class="font-display text-lg mb-1.5">주일예배</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오전 11:00</div>
+          </div>
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">SUNDAY</div>
+            <div class="font-display text-lg mb-1.5">주일학교 (유·초·중고등부)</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오전 11:00</div>
+          </div>
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">WEDNESDAY</div>
+            <div class="font-display text-lg mb-1.5">수요예배</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오후 7:30</div>
+          </div>
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">MON – SAT</div>
+            <div class="font-display text-lg mb-1.5">새벽기도회</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오전 5:30</div>
+          </div>
+          <div class="bg-jeju-surface dark:bg-jeju-surfaceDark hover:bg-jeju-tealTint dark:hover:bg-jeju-tealTintDark transition-colors p-7">
+            <div class="text-xs tracking-wide font-bold text-jeju-tangerine dark:text-jeju-tangerineDark mb-2.5">FRIDAY</div>
+            <div class="font-display text-lg mb-1.5">금요기도회</div>
+            <div class="tabular-nums text-jeju-inkSoft dark:text-jeju-inkSoftDark">오후 9:00</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MINISTRIES ================= -->
+    <section id="ministries" class="py-24">
+      <div class="max-w-[1140px] mx-auto px-7">
+        <div class="reveal max-w-xl mb-14">
+          <span class="block font-accent italic font-medium text-jeju-teal dark:text-jeju-tealDark mb-3.5">MINISTRIES</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl mb-4" style="text-wrap:balance;">사역 소개</h2>
+          <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark">다양한 세대와 은사가 어우러져 하나의 공동체를 이룹니다.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2 L14 8 L20 8 L15 12 L17 18 L12 14 L7 18 L9 12 L4 8 L10 8 Z"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">다음세대</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">유아부터 청소년까지, 신앙의 다음 세대를 함께 키웁니다.</p>
+          </div>
+
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 20 C4 15 8 12 12 12 C16 12 20 15 20 20" stroke-linecap="round"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">청년부</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">제주에서 청춘을 살아가는 청년들의 신앙 공동체입니다.</p>
+          </div>
+
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 2 C6 6 3 10 3 14 C3 18.4 7 21 12 21 C17 21 21 18.4 21 14 C21 10 18 6 12 2 Z"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">선교회</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">국내외 선교지를 후원하고 단기선교로 함께 나아갑니다.</p>
+          </div>
+
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21 C7 17 3 13.5 3 9.5 C3 6.5 5.4 4.5 8 4.5 C9.8 4.5 11.2 5.4 12 6.8 C12.8 5.4 14.2 4.5 16 4.5 C18.6 4.5 21 6.5 21 9.5 C21 13.5 17 17 12 21 Z"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">구제·봉사부</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">지역 이웃과 소외된 이들을 섬기는 나눔을 실천합니다.</p>
+          </div>
+
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M9 18 V6 L20 4 V16" stroke-linecap="round" stroke-linejoin="round"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">찬양팀</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">예배마다 마음을 다해 찬양을 준비하고 섬깁니다.</p>
+          </div>
+
+          <div class="reveal bg-jeju-surface dark:bg-jeju-surfaceDark border border-jeju-line dark:border-jeju-lineDark rounded-sm p-7 transition-all hover:-translate-y-1 hover:border-jeju-teal dark:hover:border-jeju-tealDark hover:shadow-lg">
+            <div class="w-11 h-11 rounded-sm bg-jeju-tangerineTint dark:bg-jeju-tangerineTintDark flex items-center justify-center mb-4.5">
+              <svg class="w-5.5 h-5.5 stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 19.5 A2.5 2.5 0 0 1 6.5 17 H20 V4 H6.5 A2.5 2.5 0 0 0 4 6.5 Z"/><path d="M4 19.5 V6.5"/></svg>
+            </div>
+            <h3 class="font-display text-lg mb-2">제자훈련</h3>
+            <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark text-sm">말씀 위에 삶을 세우는 체계적인 양육 과정입니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NATURE STRIP ================= -->
+    <section>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-0.5 bg-jeju-line dark:bg-jeju-lineDark">
+        <div class="relative aspect-square overflow-hidden">
+          <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="200" class="fill-jeju-sea1 dark:fill-jeju-sea1Dark"/>
+            <path d="M0 60 L45 20 L70 38 L100 10 C110 2,124 2,132 12 L150 32 L200 55 V200 H0 Z" class="fill-jeju-teal dark:fill-jeju-tealDark" opacity="0.9"/>
+            <path d="M0 90 L60 55 L100 60 L150 40 L200 90 V200 H0 Z" class="fill-jeju-tealDeep dark:fill-jeju-tealDeepDark" opacity="0.7"/>
+          </svg>
+          <span class="absolute left-3.5 bottom-3 text-white text-sm font-bold" style="text-shadow:0 1px 6px rgba(0,0,0,0.4)">한라산</span>
+        </div>
+        <div class="relative aspect-square overflow-hidden">
+          <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="200" class="fill-jeju-sea2 dark:fill-jeju-sea2Dark"/>
+            <path d="M0 70 Q50 55 100 70 T200 70 V200 H0 Z" class="fill-jeju-sea1 dark:fill-jeju-sea1Dark"/>
+            <path d="M0 110 Q50 95 100 110 T200 110 V200 H0 Z" class="fill-jeju-tealDeep dark:fill-jeju-tealDeepDark" opacity="0.6"/>
+            <circle cx="150" cy="40" r="20" class="fill-jeju-sun" opacity="0.85"/>
+          </svg>
+          <span class="absolute left-3.5 bottom-3 text-white text-sm font-bold" style="text-shadow:0 1px 6px rgba(0,0,0,0.4)">제주 바다</span>
+        </div>
+        <div class="relative aspect-square overflow-hidden">
+          <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="200" class="fill-jeju-tangerineTint dark:fill-jeju-tangerineTintDark"/>
+            <g class="fill-jeju-tangerine dark:fill-jeju-tangerineDark">
+              <circle cx="40" cy="50" r="16"/><circle cx="90" cy="35" r="16"/><circle cx="140" cy="55" r="16"/>
+              <circle cx="60" cy="95" r="16"/><circle cx="115" cy="90" r="16"/><circle cx="165" cy="105" r="16"/>
+              <circle cx="35" cy="140" r="16"/><circle cx="90" cy="150" r="16"/><circle cx="145" cy="150" r="16"/>
+            </g>
+          </svg>
+          <span class="absolute left-3.5 bottom-3 text-jeju-tangerineDeep dark:text-jeju-tangerineDeepDark text-sm font-bold">감귤밭</span>
+        </div>
+        <div class="relative aspect-square overflow-hidden">
+          <svg class="w-full h-full" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice">
+            <rect width="200" height="200" class="fill-jeju-surfaceAlt dark:fill-jeju-surfaceAltDark"/>
+            <g class="fill-jeju-inkFaint dark:fill-jeju-inkFaintDark" opacity="0.55">
+              <ellipse cx="40" cy="60" rx="22" ry="16"/>
+              <ellipse cx="100" cy="40" rx="26" ry="18"/>
+              <ellipse cx="160" cy="70" rx="20" ry="15"/>
+              <ellipse cx="70" cy="110" rx="24" ry="17"/>
+              <ellipse cx="140" cy="130" rx="22" ry="16"/>
+              <ellipse cx="40" cy="160" rx="20" ry="15"/>
+            </g>
+          </svg>
+          <span class="absolute left-3.5 bottom-3 text-jeju-ink dark:text-jeju-inkDark text-sm font-bold">현무암</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LOCATION ================= -->
+    <section id="location" class="py-24 bg-jeju-surfaceAlt dark:bg-jeju-surfaceAltDark">
+      <div class="max-w-[1140px] mx-auto px-7">
+        <div class="reveal max-w-xl mb-14">
+          <span class="block font-accent italic font-medium text-jeju-teal dark:text-jeju-tealDark mb-3.5">VISIT US</span>
+          <h2 class="font-display font-bold text-3xl md:text-4xl mb-4" style="text-wrap:balance;">찾아오시는 길</h2>
+          <p class="text-jeju-inkSoft dark:text-jeju-inkSoftDark">제주 시내 어디서든 편하게 오실 수 있도록 안내해 드립니다.</p>
+        </div>
+
+        <div class="reveal grid grid-cols-1 md:grid-cols-[0.9fr_1.1fr] gap-14 items-center">
+          <div class="border border-jeju-line dark:border-jeju-lineDark rounded-sm overflow-hidden bg-jeju-sea3 dark:bg-jeju-sea3Dark">
+            <svg class="w-full h-full" viewBox="0 0 400 400">
+              <rect width="400" height="400" class="fill-jeju-sea3 dark:fill-jeju-sea3Dark"/>
+              <path d="M0 0 H400 V60 H0 Z" class="fill-jeju-surface dark:fill-jeju-surfaceDark" opacity="0.5"/>
+              <path d="M0 60 H400" class="stroke-jeju-lineStrong dark:stroke-jeju-lineStrongDark" stroke-width="2"/>
+              <path d="M60 0 V400" class="stroke-jeju-lineStrong dark:stroke-jeju-lineStrongDark" stroke-width="6" opacity="0.6"/>
+              <path d="M0 220 H400" class="stroke-jeju-lineStrong dark:stroke-jeju-lineStrongDark" stroke-width="10" opacity="0.5"/>
+              <path d="M250 0 V400" class="stroke-jeju-lineStrong dark:stroke-jeju-lineStrongDark" stroke-width="3" opacity="0.4"/>
+              <circle cx="250" cy="220" r="9" class="fill-jeju-tangerine dark:fill-jeju-tangerineDark"/>
+              <path d="M250 190 v-34 M239 168 h22" class="stroke-jeju-tangerineDeep dark:stroke-jeju-tangerineDeepDark" stroke-width="3" stroke-linecap="round"/>
+              <text x="264" y="215" class="fill-jeju-ink dark:fill-jeju-inkDark" style="font-family:'Gothic A1',sans-serif; font-size:13px; font-weight:700;">제주평안교회</text>
+              <path d="M0 300 Q80 280 400 320" class="stroke-jeju-sea2 dark:stroke-jeju-sea2Dark" stroke-width="14" fill="none" opacity="0.35"/>
+            </svg>
+          </div>
+
+          <div>
+            <dl>
+              <dt class="text-xs tracking-wide uppercase text-jeju-inkFaint dark:text-jeju-inkFaintDark mb-1">주소</dt>
+              <dd class="text-base mb-5">제주특별자치도 제주시 ○○로 123 (평안동)</dd>
+              <dt class="text-xs tracking-wide uppercase text-jeju-inkFaint dark:text-jeju-inkFaintDark mb-1">전화</dt>
+              <dd class="text-base mb-5">064-000-0000</dd>
+              <dt class="text-xs tracking-wide uppercase text-jeju-inkFaint dark:text-jeju-inkFaintDark mb-1">이메일</dt>
+              <dd class="text-base mb-5">info@jejupyeongan.church</dd>
+              <dt class="text-xs tracking-wide uppercase text-jeju-inkFaint dark:text-jeju-inkFaintDark mb-1">주차</dt>
+              <dd class="text-base">본당 옆 교회 주차장 이용 (약 40대), 만차 시 인근 공영주차장 안내</dd>
+            </dl>
+            <div class="mt-7 pt-6 border-t border-jeju-line dark:border-jeju-lineDark text-sm text-jeju-inkSoft dark:text-jeju-inkSoftDark">
+              제주국제공항에서 차량으로 약 20분 거리이며, 시내버스 노선도 인근에 정차합니다. 처음 방문하시는 분은 예배 시작 20분 전 도착을 권해 드립니다.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-jeju-ink dark:bg-[#081412] text-white/80 py-14">
+    <div class="max-w-[1140px] mx-auto px-7">
+      <div class="flex flex-wrap justify-between items-start gap-6 pb-8 mb-6 border-b border-white/10">
+        <div>
+          <div class="font-display text-lg text-white mb-2">제주평안교회</div>
+          <div class="text-sm opacity-75 leading-loose">제주특별자치도 제주시 ○○로 123 (평안동)<br>064-000-0000 · info@jejupyeongan.church</div>
+        </div>
+        <div class="flex gap-6 text-sm">
+          <a href="#welcome" class="opacity-80 hover:opacity-100 hover:text-jeju-tangerineDark transition">소개</a>
+          <a href="#services" class="opacity-80 hover:opacity-100 hover:text-jeju-tangerineDark transition">예배안내</a>
+          <a href="#ministries" class="opacity-80 hover:opacity-100 hover:text-jeju-tangerineDark transition">사역</a>
+          <a href="#location" class="opacity-80 hover:opacity-100 hover:text-jeju-tangerineDark transition">오시는길</a>
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-between gap-2 text-xs opacity-55">
+        <span>© 2026 Jeju Pyeongan Church. All rights reserved.</span>
+        <span>바람과 파도가 잦아드는 곳, 평안이 머무는 교회</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // nav bg + shrink on scroll
+  (function(){
+    var navBg = document.getElementById('navBg');
+    var nav = document.getElementById('nav');
+    var last = -1;
+    function onScroll(){
+      var y = window.scrollY || document.documentElement.scrollTop;
+      var scrolled = y > 40;
+      if(scrolled !== last){
+        navBg.style.height = scrolled ? '74px' : '0px';
+        navBg.classList.toggle('border-jeju-line', scrolled);
+        navBg.classList.toggle('dark:border-jeju-lineDark', scrolled);
+        nav.classList.toggle('py-3.5', scrolled);
+        nav.classList.toggle('py-5', !scrolled);
+        last = scrolled;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+
+  // mobile menu toggle
+  (function(){
+    var btn = document.getElementById('navToggle');
+    var menu = document.getElementById('mobileMenu');
+    if(!btn || !menu) return;
+    btn.addEventListener('click', function(){
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    });
+  })();
+
+  // reveal on scroll
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window) || !els.length){
+      els.forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+
+  // hero parallax
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var layers = document.querySelectorAll('.parallax-layer');
+    if(reduce || !layers.length) return;
+    var ticking = false;
+    function update(){
+      var y = window.scrollY || 0;
+      layers.forEach(function(el){
+        var depth = parseFloat(el.getAttribute('data-depth')) || 0.2;
+        el.style.transform = 'translateY(' + (y * depth * 0.12) + 'px)';
+      });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function(){
+      if(!ticking){ requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
+  })();
+</script>
+</body>
+</html>
